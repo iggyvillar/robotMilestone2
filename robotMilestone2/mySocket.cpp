@@ -79,16 +79,16 @@ MySocket::~MySocket() {
     WSACleanup();
 }
 
-bool MySocket::ConnectTCP() {
+void MySocket::ConnectTCP() {
     if (connectionType != ConnectionType::TCP) {
         cout << "cannot initiate connection-oriented scenario using UDP socket" << endl;
-        return false;
+        return;
     }
     
     if (mySocket == SocketType::CLIENT) {
         if (connect(welcomeSocket, (struct sockaddr*)&SvrAddr, sizeof(SvrAddr)) == SOCKET_ERROR) {
             cout << "TCP connection failed" << endl;
-            return false;
+            return;
         }
         connectionSocket = welcomeSocket;
     } else {
@@ -97,17 +97,16 @@ bool MySocket::ConnectTCP() {
         connectionSocket = accept(welcomeSocket, (struct sockaddr*)&SvrAddr, &addrLen);
         if (connectionSocket == INVALID_SOCKET) {
             cout << "TCP accept failed" << endl;
-            return false;
+            return;
         }
     }
     bTCPConnect = true;
-    return true;
 }
 
-bool MySocket::DisconnectTCP() {
+void MySocket::DisconnectTCP() {
     if (connectionType != ConnectionType::TCP) {
         cout << "Ccnnot disconnect UDP socket" << endl;
-        return false;
+        return;
     }
     
     if (bTCPConnect) {
@@ -116,20 +115,19 @@ bool MySocket::DisconnectTCP() {
         }
         bTCPConnect = false;
     }
-    return true;
 }
 
-bool MySocket::SendData(const char* data, int bytes) {
+void MySocket::SendData(const char* data, int bytes) {
     if (bytes > maxSize) {
         cout << "buffer is too small for data" << endl;
-        return false;
+        return;
     }
     
     int bytesSent;
     if (connectionType == ConnectionType::TCP) {
         if (!bTCPConnect) {
             cout << "TCP connection not established" << endl;
-            return false;
+            return;
         }
         bytesSent = send(connectionSocket, data, bytes, 0);
     } else {
@@ -139,9 +137,8 @@ bool MySocket::SendData(const char* data, int bytes) {
     
     if (bytesSent == SOCKET_ERROR) {
         cout << "send failed" << endl;
-        return false;
+        return;
     }
-    return true;
 }
 
 int MySocket::GetData(char* data) {
@@ -174,14 +171,13 @@ string MySocket::GetIPAddr() {
     return IPAddr;
 }
 
-bool MySocket::SetPort(int portNumber) {
+void MySocket::SetPort(int portNumber) {
     if (bTCPConnect) {
         cout << "cannot change port while connected" << endl;
-        return false;
+        return;
     }
     port = portNumber;
     SvrAddr.sin_port = htons(port);
-    return true;
 }
 
 int MySocket::GetPort() {
@@ -192,11 +188,10 @@ SocketType MySocket::GetType() {
     return mySocket;
 }
 
-bool MySocket::SetType(SocketType socketType) {
+void MySocket::SetType(SocketType socketType) {
     if (bTCPConnect || (mySocket == SocketType::SERVER && welcomeSocket != INVALID_SOCKET)) {
         cout << "cannot change socket type while connected" << endl;
-        return false;
+        return;
     }
     mySocket = socketType;
-    return true;
 }
