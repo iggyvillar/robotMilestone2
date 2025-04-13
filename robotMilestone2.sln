@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "robotMilestone2", "robotMilestone2\robotMilestone2.vcxproj", "{07AD9AEA-2091-42CA-8CAB-D5C147CD69BA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest1", "UnitTest1\UnitTest1.vcxproj", "{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{07AD9AEA-2091-42CA-8CAB-D5C147CD69BA}.Release|x64.Build.0 = Release|x64
 		{07AD9AEA-2091-42CA-8CAB-D5C147CD69BA}.Release|x86.ActiveCfg = Release|Win32
 		{07AD9AEA-2091-42CA-8CAB-D5C147CD69BA}.Release|x86.Build.0 = Release|Win32
+		{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}.Debug|x64.ActiveCfg = Debug|x64
+		{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}.Debug|x64.Build.0 = Debug|x64
+		{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}.Debug|x86.ActiveCfg = Debug|Win32
+		{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}.Debug|x86.Build.0 = Debug|Win32
+		{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}.Release|x64.ActiveCfg = Release|x64
+		{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}.Release|x64.Build.0 = Release|x64
+		{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}.Release|x86.ActiveCfg = Release|Win32
+		{EFEE0B0F-347C-4C46-9F1D-47A4E843BEB0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
